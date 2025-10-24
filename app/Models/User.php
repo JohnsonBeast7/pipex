@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Auth;
 class User extends Auth
 {
@@ -20,5 +19,15 @@ class User extends Auth
         'password' => 'hashed',
         'created_at' => 'date'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }

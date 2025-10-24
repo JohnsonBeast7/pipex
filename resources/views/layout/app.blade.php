@@ -7,6 +7,7 @@
     <title>@yield('title', 'PipeX')</title>
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/x-icon">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles()
 </head>
 <body>
     @include('structure.header')
@@ -14,5 +15,8 @@
     @yield('content')
 
     @include('structure.footer')
+
+    @stack('scripts')
+    @livewireScripts
 </body>
 </html>
