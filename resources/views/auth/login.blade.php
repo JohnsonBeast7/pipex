@@ -3,7 +3,7 @@
 @section('title', 'Login - PipeX')
 
 @section('content')
- <main class="bg-gray-700">
+ <main class="h-screen bg-gray-700">
     <div class="flex flex-col items-center w-full max-w-[1072px] px-6 m-auto py-20">
         <div class="flex flex-col gap-4 items-center w-full max-w-[512px] bg-gray-800 shadow-md py-10 px-6">
             <div class="flex flex-row items-center gap-1">
@@ -16,12 +16,12 @@
                 @csrf
                 <div class="flex flex-col gap-1 w-full">
                     <label for="username" class="text-white font-medium">Usuário</label>
-                    <input type="text" id="username" name="username" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg font-medium text-neutral-800" value="{{ old('username') }}">
+                    <input type="text" id="username" name="username" placeholder="Digite seu usuário" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg text-neutral-800" value="{{ old('username') }}">
                     @error('username') <p class="text-red-500 text-sm sm:text-base">{{ $message }}</p> @enderror            
                 </div>
                 <div class="flex flex-col gap-1 w-full">
                     <label for="password" class="text-white font-medium">Senha</label>
-                    <input type="password" id="password" name="password" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg font-medium text-neutral-800">
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg text-neutral-800">
                     @error('password') <p class="text-red-500 text-sm sm:text-base">{{ $message }}</p> @enderror
                 </div>
                 @error('user')

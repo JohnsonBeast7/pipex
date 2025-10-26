@@ -50,10 +50,16 @@ class PostsController extends Controller
                 ->where('user_id', Auth::id())
                 ->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            dd('erro');
+            return redirect()
+                ->route('home')
+                ->with('error', 'Impossível deletar esse post!');
         }
 
-        dd('certo');
+        $post->delete();
+
+        return redirect()
+            ->route('home')
+            ->with('success', 'Seu post foi deletado com sucesso!');
     }
 
     public function post($hash)

@@ -4,8 +4,16 @@
 
 @section('content')
     <main class="min-h-screen bg-gray-700">
-        <div class="flex flex-col gap-12 items-center w-full max-w-[1072px] px-6 m-auto py-20">
-            @if(!$posts->isEmpty()) 
+        <div class="flex flex-col gap-6 items-center w-full max-w-[1072px] px-6 m-auto py-7">
+            @if($posts->isEmpty()) 
+                <div class="text-white text-xl font-medium">
+                    <p>Ainda não existe nenhum post, que tal criar o primeiro?</p>
+                </div>          
+            @else
+                <div class="self-start flex flex-row gap-1 items-center">
+                    <p class="text-lg font-semibold text-white">Início</p>
+                </div>
+                <div class="flex flex-col gap-12 w-full items-center">
                 @foreach($posts as $post)
                     <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
                         <div class="flex flex-row gap-3 items-center">
@@ -34,9 +42,6 @@
                         </div>
                     </div>
                 @endforeach
-            @else
-                <div class="text-white text-xl font-medium">
-                    <p>Ainda não existe nenhum post, que tal criar o primeiro?</p>
                 </div>
             @endif
             <div class="flex row gap-2">
@@ -53,7 +58,7 @@
                 Swal.fire({
                     toast: true,
                     icon: "success", 
-                    iconColor: "#0084d1",     
+                    iconColor: "#ffffff",     
                     title: @json(session('success')),
                     position: "bottom",
                     background: "#0ea5e9",
@@ -62,10 +67,28 @@
                     timer: 3000,
                     timerProgressBar: true,
                     customClass: {
-                        margin: 'margin-bottom: 10px;'
+                        timerProgressBar: 'bg-white text-white'
                     }
                 });
             });
+        @elseif (session('error'))
+            document.addEventListener('DOMContentLoaded', () => {
+                Swal.fire({
+                    toast: true,
+                    icon: "error", 
+                    iconColor: "#ffffff",     
+                    title: @json(session('error')),
+                    position: "bottom",
+                    background: "#0ea5e9",
+                    color: "#fff",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    customClass: {
+                        timerProgressBar: 'bg-white text-white'
+                    }
+                });
+            })
         @endif
     </script>
     @vite('resources/js/delete-modal.js')

@@ -6,7 +6,7 @@ window.addEventListener('toast', event => {
             Swal.fire({
                 toast: true,
                 icon: "success", 
-                iconColor: "#0084d1", 
+                iconColor: "#ffffff", 
                 title: message,
                 position: "bottom",
                 background: "#0ea5e9",
@@ -23,7 +23,7 @@ window.addEventListener('toast', event => {
             Swal.fire({
                 toast: true,
                 icon: "error", 
-                iconColor: "#0084d1", 
+                iconColor: "#ffffff", 
                 title: message,
                 position: "bottom",
                 background: "#0ea5e9",
