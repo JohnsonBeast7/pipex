@@ -18,5 +18,43 @@
 
     @stack('scripts')
     @livewireScripts
+
+    <script>      
+            document.addEventListener('DOMContentLoaded', () => {
+                @if (session('success'))
+                    Swal.fire({
+                        toast: true,
+                        icon: "success", 
+                        iconColor: "#ffffff",     
+                        title: @json(session('success')),
+                        position: "bottom",
+                        background: "#0ea5e9",
+                        color: "#fff",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        customClass: {
+                            timerProgressBar: 'bg-white text-white'
+                        }
+                    });
+                @elseif (session('error'))
+                    Swal.fire({
+                        toast: true,
+                        icon: "error", 
+                        iconColor: "#ffffff",     
+                        title: @json(session('error')),
+                        position: "bottom",
+                        background: "#0ea5e9",
+                        color: "#fff",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        customClass: {
+                            timerProgressBar: 'bg-white text-white'
+                        }
+                    });
+                @endif
+            });      
+    </script>
 </body>
 </html>

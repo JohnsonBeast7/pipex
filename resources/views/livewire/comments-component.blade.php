@@ -8,7 +8,13 @@
     
         
     <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
-        <p class="text-white text-lg font-semibold border-b border-gray-600 pb-2">Comentários</p>
+        <div class="flex flex-row gap-1 items-center pb-2">
+            @if($comments->count() != 0)
+                <p class="text-gray-200 text-lg font-semibold">{{ $comments->count() }}</p>
+            @endif
+            <p class="text-white text-lg font-semibold"> {{ Str::plural('Comentário', $comments->count()) }} </p>
+        </div>
+        
         <div class="flex flex-col gap-2">
             @if($comments->isEmpty())
                 <p class="text-white pt-2">Ainda não existe nenhum comentário nessa publicação.</p>

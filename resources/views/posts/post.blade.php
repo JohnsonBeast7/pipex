@@ -22,10 +22,6 @@
             </p>
             <div class="flex flex-col gap-2 mt-4">
                 <p class="text-gray-400 opacity-75 border-b border-gray-600 pb-2">{{ $post->created_at->locale('pt_BR')->translatedFormat('H:i \-\ d \d\e M \d\e Y') }}</p>
-                <div class="flex flex-row gap-1 opacity-75">
-                    <img class="w-full max-w-4 group-hover:scale-[1.15] transition duration-700" src="{{ asset('assets/images/comment.svg') }}">
-                    <p class="text-gray-400 ">{{ $post->comments_count }}</p>                 
-                </div>
             </div>
         </div>
         @livewire('comments-component', ['postId' => $post->id])

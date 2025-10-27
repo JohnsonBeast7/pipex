@@ -16,19 +16,26 @@
                 <div class="flex flex-col gap-12 w-full items-center">
                 @foreach($posts as $post)
                     <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
-                        <div class="flex flex-row gap-3 items-center">
-                            <div class="flex flex-row gap-2 items-center">
-                                <img class="max-w-6 max-h-6" src="{{ Storage::url($post->user->profile_pic) }}">
-                                <h3 class="text-white font-medium text-lg">{{ $post->user->username }}</h3>
-                            </div>                           
-                            <p class="text-gray-400 opacity-75">{{ $post->created_at->locale('pt_BR')->translatedFormat('d \d\e M') }}</p>
-                            @if(auth()->check() && $post->user_id == auth()->user()->id) 
-                                <form id="deletePost{{ $post->id }}" action="{{ route('postDelete', $post->id) }}" method="POST" class="hidden">
-                                    @csrf
-                                    @method('DELETE')                                
-                                </form>
-                                <button onclick="deletePost({{ $post->id }})">Delete</button>
-                                
+                        <div class="flex flex-row gap-3 items-center justify-between">
+                            <div class="flex flex-row gap-3 items-center">
+                                <div class="flex flex-row gap-2 items-center">
+                                    <img class="max-w-6 max-h-6" src="{{ Storage::url($post->user->profile_pic) }}">
+                                    <h3 class="text-white font-medium text-lg">{{ $post->user->username }}</h3>
+                                </div>                           
+                                <p class="text-gray-400 opacity-75">{{ $post->created_at->locale('pt_BR')->translatedFormat('d \d\e M') }}</p>
+                            </div>                        
+                            @if(auth()->check() && $post->user_id == auth()->user()->id)
+                                <div class="flex flex-row gap-3">
+                                    <img class="w-5 h-5" src="{{ asset('assets/images/edit.png') }}">
+                                    <div class="flex flex-row gap-1">
+                                        <form id="deletePost{{ $post->id }}" action="{{ route('postDelete', $post->id) }}" method="POST" class="hidden">
+                                            @csrf
+                                            @method('DELETE')                                
+                                        </form>
+                                        <button onclick="deletePost({{ $post->id }})"><img class="w-5 h-5" src="{{ asset('assets/images/delete.svg') }}"></button>   
+                                    </div>   
+                                </div>
+                                            
                             @endif
                         </div>  
                         <p class="text-gray-100">
@@ -52,45 +59,6 @@
 @endsection
 
 @push('scripts')
-    <script>
-        @if (session('success'))
-            document.addEventListener('DOMContentLoaded', () => {
-                Swal.fire({
-                    toast: true,
-                    icon: "success", 
-                    iconColor: "#ffffff",     
-                    title: @json(session('success')),
-                    position: "bottom",
-                    background: "#0ea5e9",
-                    color: "#fff",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    customClass: {
-                        timerProgressBar: 'bg-white text-white'
-                    }
-                });
-            });
-        @elseif (session('error'))
-            document.addEventListener('DOMContentLoaded', () => {
-                Swal.fire({
-                    toast: true,
-                    icon: "error", 
-                    iconColor: "#ffffff",     
-                    title: @json(session('error')),
-                    position: "bottom",
-                    background: "#0ea5e9",
-                    color: "#fff",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    customClass: {
-                        timerProgressBar: 'bg-white text-white'
-                    }
-                });
-            })
-        @endif
-    </script>
-    @vite('resources/js/delete-modal.js')
+    @vite('resources/js/postdelete-modal.js')
 @endpush
 

@@ -14,8 +14,7 @@ class PostsController extends Controller
     {
         if(!Auth::check()) {
             return redirect()
-                ->route('login')
-                ->with('');
+                ->route('login');
         }
 
         return view('posts.post-make');
@@ -50,8 +49,7 @@ class PostsController extends Controller
                 ->where('user_id', Auth::id())
                 ->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()
-                ->route('home')
+            return back()
                 ->with('error', 'Impossível deletar esse post!');
         }
 
@@ -67,7 +65,7 @@ class PostsController extends Controller
         try {
             $post = Post::where('hash', $hash)
                 ->with('user:id,username,profile_pic')
-                ->withCOunt('comments')
+                ->withCount('comments')
                 ->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return view('fallback',['fallback' => 'post']);
