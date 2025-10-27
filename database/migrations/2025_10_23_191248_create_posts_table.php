@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('hash', 255);
+            $table->string('hash', 255)->unique();
             $table->text('post');
             $table->dateTime('edited_at')->nullable();
             $table->timestamps();

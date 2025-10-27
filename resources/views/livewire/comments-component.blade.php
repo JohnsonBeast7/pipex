@@ -21,11 +21,15 @@
             @else
                 @foreach($comments as $comment)
                     <div class="w-full flex flex-col gap-2 pt-4 pb-6 border-b border-gray-600">
-                        <div class="flex flex-row gap-3 items-center">
-                            <div class="flex flex-row gap-2 items-center">
-                                <img class="max-w-6 max-h-6" src="{{ Storage::url($comment->user->profile_pic) }}">
-                                <h3 class="text-white font-medium text-lg">{{ $comment->user->username }}</h3>
-                            </div>     
+                        <div class="flex flex-row gap-2 items-center">
+                            <div class="flex flex-row gap-1 items-center">
+                                <a href="{{ route('profile', $comment->user->username) }}" class="flex flex-row gap-2 items-center">
+                                    <img class="w-6 h-6 rounded-full object-cover" src="{{ Storage::url($comment->user->profile_pic) }}">
+                                    <h3 class="text-white font-medium">{{ $comment->user->username }}</h3>
+                                </a>
+                                <p class="text-gray-400 opacity-75"><span class="text-sm">&commat;</span>{{ $comment->user->username }}</p>
+                            </div>    
+                            <span class="text-gray-400 opacity-75">•</span>    
                             <p class="text-gray-400 opacity-75">{{ $comment->created_at->locale('pt_BR')->translatedFormat('d \d\e M') }}</p>
                         </div>  
                         <p class="text-gray-100">

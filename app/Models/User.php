@@ -7,6 +7,7 @@ class User extends Auth
 {
     protected $fillable = [
         'username',
+        'nickname',
         'email',
         'password'
     ];

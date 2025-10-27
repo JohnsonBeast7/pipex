@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 50)->unique;
+            $table->string('username', 30)->unique;
+            $table->string('nickname', 25);
             $table->string('email', 255)->unique;
             $table->string('password', 255);
             $table->string('profile_pic', 255)->default('profile/user.png');

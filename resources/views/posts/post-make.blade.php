@@ -11,7 +11,7 @@
                 </div>  
                 <form action="{{ route('postCreate') }}" method="POST" class="w-full flex flex-col gap-2">
                     @csrf
-                    <textarea name="post" id="post" class="w-full rounded-lg resize-none bg-gray-800 bg-opacity-0 focus:outline-none py-2 text-gray-100" rows="4" placeholder="Adotei um gato branco hoje!" maxlength="380"></textarea>
+                    <textarea name="post" id="post" class="w-full rounded-lg resize-none bg-gray-800 bg-opacity-0 focus:outline-none py-2 text-gray-100" rows="4" placeholder="Adotei um gato branco hoje!" maxlength="380">{{ old('post') }}</textarea>
                     
                     <button class="w-fit bg-gray-100 hover:bg-gray-200 transition duration-300 text-neutral-800 font-semibold px-4 py-2 rounded-lg " type="submit">Postar</button>
                     @error('post') <p class="text-red-500 text-sm sm:text-base">{{ $message }}</p> @enderror

@@ -14,11 +14,11 @@ class MainController extends Controller
     
     public function home() 
     {
-        $posts = Post::with('user:id,username,profile_pic')
+        $posts = Post::with('user:id,username,nickname,profile_pic')
             ->withCount('comments')
             ->latest()
             ->paginate(10);
 
-        return view('home', ['posts' => $posts]);
+        return view('home', compact('posts'));
     }
 }

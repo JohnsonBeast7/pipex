@@ -40,10 +40,10 @@ class CommentsComponent extends Component
             return;
         }
 
-        RateLimiter::hit($key, 15);
+        RateLimiter::hit($key, 10);
 
         try {
-            $post = Post::findOrFail($this->postId);
+            Post::findOrFail($this->postId);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home');
         }
@@ -70,9 +70,6 @@ class CommentsComponent extends Component
             ->with('user:id,username,profile_pic')
             ->latest()
             ->get();
-
-
-        ;
     }
     
     public function render()

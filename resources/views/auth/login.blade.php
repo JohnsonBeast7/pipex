@@ -16,7 +16,7 @@
                 @csrf
                 <div class="flex flex-col gap-1 w-full">
                     <label for="username" class="text-white font-medium">Usuário</label>
-                    <input type="text" id="username" name="username" placeholder="Digite seu usuário" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg text-neutral-800" value="{{ old('username') }}">
+                    <input type="text" id="username" name="username" placeholder="Digite seu usuário" class="w-full bg-gray-100 focus:ring-0 focus:outline-none px-2 py-2 rounded-lg text-neutral-800" value="{{ old('username') }}" oninput="this.value = this.value.replace(/\s/g, '');">
                     @error('username') <p class="text-red-500 text-sm sm:text-base">{{ $message }}</p> @enderror            
                 </div>
                 <div class="flex flex-col gap-1 w-full">
