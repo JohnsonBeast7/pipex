@@ -17,7 +17,7 @@
                         <img class="w-5 h-5" src="{{ asset('assets/images/edit.png') }}">    
                     </a>  
                 @endif
-                <div class="flex flex-col items-center mt-[48px]">
+                <div class="flex flex-col items-center {{ auth()->check() && $user->id == auth()->user()->id ? 'mt-[48px]' : 'mt-[81px]' }}">
                     <div class="flex flex-row gap-1 items-center">
                         <p class="text-white font-medium">{{ $user->nickname }}</p>
                     </div>            
