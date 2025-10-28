@@ -10,11 +10,12 @@
             <p class="text-lg font-semibold text-white">Editar Post</p>
         </div>
         <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
-            <div class="flex flex-row gap-3 items-center">
+            <div class="flex xs:flex-row flex-col gap-1 xs:items-center items-start">
                 <div class="flex flex-row gap-2 items-center">
                     <img class="w-6 h-6 rounded-full object-cover" src="{{ Storage::url($post->user->profile_pic) }}">
-                    <h3 class="text-white font-medium text-lg">{{ $post->user->username }}</h3>
-                </div>   
+                    <h3 class="text-white font-medium md:max-w-full xs:max-w-[150px] max-w-[200px] truncate">{{ $post->user->nickname }}</h3>
+                </div> 
+                <p class="text-gray-400 opacity-75 md:max-w-full xs:max-w-[150px] max-w-[200px] truncate"><span class="text-sm">&commat;</span>{{ $post->user->username }}</p>  
             </div>
             <form action="{{route('postUpdate', $post->hash) }}" method="POST" class="flex flex-col gap-4"> 
                 @csrf

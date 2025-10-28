@@ -67,7 +67,8 @@ class PostsController extends Controller
 
         $post->delete();
 
-        return back()
+        return redirect()
+            ->route('home')
             ->with('success', 'Seu post foi deletado com sucesso!');
     }
 

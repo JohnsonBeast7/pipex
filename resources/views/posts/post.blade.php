@@ -10,15 +10,15 @@
         </div>
         <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
             <div class="flex flex-row gap-3 items-center justify-between">
-                <div class="flex flex-row gap-1 items-center">
+                <div class="flex xs:flex-row flex-col gap-1 xs:items-center items-start">
                     <a href="{{ route('profile', $post->user->username) }}" class="flex flex-row gap-2 items-center">
                         <img class="w-6 h-6 rounded-full object-cover" src="{{ Storage::url($post->user->profile_pic) }}">
-                        <h3 class="text-white font-medium ">{{ $post->user->nickname }}</h3>
+                        <h3 class="text-white font-medium md:max-w-full xs:max-w-[150px] max-w-[200px] truncate">{{ $post->user->nickname }}</h3>
                     </a>
-                    <p class="text-gray-400 opacity-75"><span class="text-sm">&commat;</span>{{ $post->user->username }}</p>
+                    <p class="text-gray-400 opacity-75 md:max-w-full xs:max-w-[150px] max-w-[200px] truncate"><span class="text-sm">&commat;</span>{{ $post->user->username }}</p>
                 </div>
                 @if(auth()->check() && $post->user_id == auth()->user()->id)
-                                <div class="flex flex-row gap-3">
+                                <div class="md:flex hidden flex-row gap-2">
                                     <a href="{{ route('postEdit', $post->hash) }}">
                                         <img class="w-5 h-5" src="{{ asset('assets/images/edit.png') }}">    
                                     </a>                       
@@ -27,14 +27,30 @@
                                             @csrf
                                             @method('DELETE')                                
                                         </form>
-                                        <button onclick="deletePost({{ $post->id }})">
+                                        <button onclick="confirmDelete('deletePost', {{ $post->id }})">
                                             <img class="w-5 h-5" src="{{ asset('assets/images/delete.svg') }}">
                                         </button>   
                                     </div>   
                                 </div>                                          
                             @endif
             </div>  
-            <p class="text-gray-100">
+            @if(auth()->check() && $post->user_id == auth()->user()->id)
+                <div class="flex md:hidden flex-row gap-2">
+                    <a href="{{ route('postEdit', $post->hash) }}">
+                        <img class="w-4 h-4" src="{{ asset('assets/images/edit.png') }}">    
+                    </a>                       
+                    <div class="flex flex-row gap-1">
+                        <form id="deletePost{{ $post->id }}" action="{{ route('postDelete', $post->id) }}" method="POST" class="hidden">
+                            @csrf
+                            @method('DELETE')                                
+                        </form>
+                        <button onclick="confirmDelete('deletePost', {{ $post->id }})">
+                            <img class="w-4 h-4" src="{{ asset('assets/images/delete.svg') }}">
+                        </button>   
+                    </div>   
+                </div>                                          
+            @endif
+            <p class="text-gray-100 break-all">
                 {{ $post->post }}
             </p>
             <div class="w-full flex flex-row gap-2 mt-4 border-b border-gray-600">
@@ -53,5 +69,5 @@
 @endsection
 
 @push('scripts')
-    @vite(['resources/js/comments-toast.js', 'resources/js/postdelete-modal.js'])
+    @vite(['resources/js/comments-toast.js', 'resources/js/delete-modal.js'])
 @endpush

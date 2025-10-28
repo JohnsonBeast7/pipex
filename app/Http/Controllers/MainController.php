@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function root() {
+    public function fallback() 
+    {
+        return view('fallback', ['fallback' => 'destino']);
+    }
+
+    public function root() 
+    {
         return redirect()
             ->route('home');
     }

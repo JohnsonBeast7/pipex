@@ -21,15 +21,15 @@
             @else
                 @foreach($comments as $comment)
                     <div class="w-full flex flex-col gap-2 pt-4 pb-6 border-b border-gray-600">
-                        <div class="flex flex-row gap-2 items-center">
-                            <div class="flex flex-row gap-1 items-center">
+                        <div class="flex md:flex-row flex-col gap-2 md:items-center items-start">
+                            <div class="flex xs:flex-row flex-col gap-1 xs:items-center items-start">
                                 <a href="{{ route('profile', $comment->user->username) }}" class="flex flex-row gap-2 items-center">
                                     <img class="w-6 h-6 rounded-full object-cover" src="{{ Storage::url($comment->user->profile_pic) }}">
-                                    <h3 class="text-white font-medium">{{ $comment->user->username }}</h3>
+                                    <h3 class="text-white font-medium md:max-w-full xs:max-w-[150px] max-w-[200px] truncate">{{ $comment->user->nickname }}</h3>
                                 </a>
-                                <p class="text-gray-400 opacity-75"><span class="text-sm">&commat;</span>{{ $comment->user->username }}</p>
+                                <p class="text-gray-400 opacity-75 md:max-w-full xs:max-w-[150px] max-w-[200px] truncate"><span class="text-sm">&commat;</span>{{ $comment->user->username }}</p>
                             </div>    
-                            <span class="text-gray-400 opacity-75">•</span>    
+                            <span class="text-gray-400 opacity-75 md:flex hidden">•</span>    
                             <p class="text-gray-400 opacity-75">{{ $comment->created_at->locale('pt_BR')->translatedFormat('d \d\e M') }}</p>
                         </div>  
                         <p class="text-gray-100">

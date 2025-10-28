@@ -21,7 +21,7 @@ class CommentsComponent extends Component
     public function mount() 
     {     
         $this->comments = Comment::where('post_id', $this->postId)
-            ->with('user:id,username,profile_pic')
+            ->with('user:id,username,nickname,profile_pic')
             ->latest()
             ->get();
     }
@@ -67,7 +67,7 @@ class CommentsComponent extends Component
         );
         
         $this->comments = Comment::where('post_id', $this->postId)
-            ->with('user:id,username,profile_pic')
+            ->with('user:id,username,nickname,profile_pic')
             ->latest()
             ->get();
     }

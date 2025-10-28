@@ -4,7 +4,10 @@
 
 @section('content')
     <main class="min-h-screen bg-gray-700">
-        <div class="flex flex-col items-center w-full max-w-[1072px] px-6 m-auto py-20">
+        <div class="flex flex-col gap-6 items-center w-full max-w-[1072px] px-6 m-auto py-7">
+            <div class="self-start w-full flex flex-row gap-2 items-center">
+                <p class="text-lg font-semibold text-white">Criar Post</p>
+            </div>
             <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 pb-10 pt-6">
                 <div class="flex flex-row gap-4 items-center">
                     <label class="w-full text-white text-lg font-medium border-b border-gray-600 pb-2" for="post">Crie seu novo post</label>

@@ -61,19 +61,19 @@ class AuthController extends Controller
     public function registerSubmit(Request $request) 
     {
         $data = $request->validate([
-            'username' => 'required|alpha_dash|min:5|max:30',
             'nickname' => 'required|min:5|max:25',
+            'username' => 'required|alpha_dash|min:5|max:30',         
             'email' => 'required|email|max:255',
             'password' => 'required|min:5|max:255|confirmed'
         ],
-        [
+        [          
+            'nickname.required' => 'O campo não pode estar vazio',
+            'nickname.min' => 'O campo deve ter no mínimo :min caracteres',
+            'nickname.max' => 'O campo deve ter no máximo :max caracteres',
             'username.required' => 'O campo não pode estar vazio',
             'username.alpha_dash' => 'O campo não pode ter espaços',
             'username.min' => 'O campo deve ter no mínimo :min caracteres',
             'username.max' => 'O campo deve ter no máximo :max caracteres',
-            'nickname.required' => 'O campo não pode estar vazio',
-            'nickname.min' => 'O campo deve ter no mínimo :min caracteres',
-            'nickname.max' => 'O campo deve ter no máximo :max caracteres',
             'email.required' => 'O campo não pode estar vazio',
             'email.email' => 'O valor do campo deve ser um email',
             'email.max' => 'O campo deve ter no máximo :max caracteres',

@@ -8,6 +8,9 @@ use App\Http\Middleware\Logged;
 use App\Http\Middleware\NotLogged;
 use Illuminate\Support\Facades\Route;
 
+// Fallback Route
+Route::fallback([MainController::class, 'fallback']);
+
 // Root Routes
 Route::get('/', [MainController::class, 'root'])
     ->name('root');
