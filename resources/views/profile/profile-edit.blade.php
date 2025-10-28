@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', $user->username . " - PipeX")
+@section('title', "Editar Perfil - PipeX")
 
 @section('content')
  <main class="bg-gray-700 h-screen">

@@ -12,7 +12,7 @@
         <div class="w-full flex flex-col gap-2 bg-gray-800 bg-opacity-50 rounded-lg px-8 py-6">
             <div class="flex flex-row gap-3 items-center">
                 <div class="flex flex-row gap-2 items-center">
-                    <img class="max-w-6 max-h-6" src="{{ Storage::url($post->user->profile_pic) }}">
+                    <img class="w-6 h-6 rounded-full object-cover" src="{{ Storage::url($post->user->profile_pic) }}">
                     <h3 class="text-white font-medium text-lg">{{ $post->user->username }}</h3>
                 </div>   
             </div>
