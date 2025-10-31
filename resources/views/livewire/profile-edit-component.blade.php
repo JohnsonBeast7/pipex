@@ -30,9 +30,7 @@
         </div>
         <div class="w-full flex flex-row justify-between">
             @if($errors->any())
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <p class="text-red-500 text-sm sm:text-base">Preencha todos os campos corretamente</p>
             @else
                 <span></span>
             @endif
