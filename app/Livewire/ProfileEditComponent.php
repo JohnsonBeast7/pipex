@@ -29,7 +29,7 @@ class ProfileEditComponent extends Component
     public function save()
     {
         $this->validate([
-            'image' => 'nullable|image|max:5096',
+            'image' => 'nullable|image|max:15288',
             'nickname' => 'required|min:5|max:25',
             'username' => 'required|alpha_dash|min:5|max:30',
             'email' => 'required|email|max:255'

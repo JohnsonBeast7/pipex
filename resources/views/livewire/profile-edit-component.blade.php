@@ -8,7 +8,7 @@
         <input id="imageInput" type="file" accept="image/*" wire:model="image" class="hidden">       
         <div class="flex flex-col items-center bg-gray-900 px-4 py-2 rounded-xl bg-opacity-30">
             <p class="w-full max-w-40 text-center text-white text-sm">Tamanho Recomendado</p>
-            <p class="text-white font-medium">1024x1024 <span class="text-xs">(Max 5Mb)</span></p>
+            <p class="text-white font-medium">1024x1024 <span class="text-xs">(Max 15Mb)</span></p>
         </div>
     </div>
     <div class="flex flex-col w-full gap-4">
